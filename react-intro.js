@@ -9,7 +9,37 @@ function Button() {
   );
 }
 
+function Display() {
+  return <div>...</div>
+}
+
+function App() {
+  return (
+    <div>
+      <Button />
+      <Display />
+    </div>
+  );
+}
+
 ReactDOM.render(
-  <Button />,
+  // [<Button />, <Display />],
+
+  // <div>
+  //   <Button />
+  //   <Display />
+  // </div>,
+
+  // <React.Fragment>
+  //   <Button />
+  //   <Display />
+  // </React.Fragment>
+
+  // <>
+  //   <Button />
+  //   <Display />
+  // </>,
+
+  <App />,
   document.getElementById('mountNode'),
 );
