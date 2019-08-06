@@ -1,8 +1,9 @@
 function Button(props) {
+  const handleClick = () => props.onClickFunc(props.increment);
 	return (
     <button
-      onClick={props.onClickFunc}>
-      Click(+1)
+      onClick={handleClick}>
+      +{props.increment}
     </button>
   );
 }
@@ -17,10 +18,13 @@ function Display(props) {
 
 function App() {
   const [counter, setCounter] = useState(0);
-  const incrementCounter = () => setCounter(counter + 1);
+  const incrementCounter = (incrementValue) => setCounter(counter + incrementValue);
   return (
     <div>
-      <Button onClickFunc={incrementCounter} />
+      <Button onClickFunc={incrementCounter} increment={1} />
+      <Button onClickFunc={incrementCounter} increment={5} />
+      <Button onClickFunc={incrementCounter} increment={10} />
+      <Button onClickFunc={incrementCounter} increment={20} />
       <Display message={counter} />
     </div>
   );
