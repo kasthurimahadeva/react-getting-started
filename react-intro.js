@@ -1,45 +1,32 @@
-function Button() {
-  const [counter, setCounter] = useState(0);
-  const handleClick = () => setCounter(counter + 1);
+function Button(props) {
 	return (
     <button
-      onClick={handleClick}>
-      {counter}
+      onClick={props.onClickFunc}>
+      Click(+1)
     </button>
   );
 }
 
-function Display() {
-  return <div>...</div>
+function Display(props) {
+  return (
+    <div>
+      {props.message}
+    </div>
+  );
 }
 
 function App() {
+  const [counter, setCounter] = useState(0);
+  const incrementCounter = () => setCounter(counter + 1);
   return (
     <div>
-      <Button />
-      <Display />
+      <Button onClickFunc={incrementCounter} />
+      <Display message={counter} />
     </div>
   );
 }
 
 ReactDOM.render(
-  // [<Button />, <Display />],
-
-  // <div>
-  //   <Button />
-  //   <Display />
-  // </div>,
-
-  // <React.Fragment>
-  //   <Button />
-  //   <Display />
-  // </React.Fragment>
-
-  // <>
-  //   <Button />
-  //   <Display />
-  // </>,
-
   <App />,
   document.getElementById('mountNode'),
 );
