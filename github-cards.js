@@ -7,9 +7,29 @@ const testData = [
 
 const CardList = (props) => (
 <div>
-{testData.map((profile => <Card {...profile} />))}
+{props.profiles.map((profile => <Card {...profile} />))}
 </div>
 );
+
+class Form extends React.Component {
+state = {userName: ''};
+handleSubmit = (event) => {
+event.preventDefault();
+console.log(this.state.userName);
+};
+render() {
+return (
+  <form onSubmit={this.handleSubmit}>
+    <input type="text"
+      placeHolder="Github username"
+      value={this.state.userName}
+      onChange={event => this.setState({userName: event.target.value})}
+      required/>
+    <button>Add Card</button>
+  </form>
+);
+}
+}
 
 class Card extends React.Component {
 render() {
@@ -27,11 +47,16 @@ return (
 }
 
 class App extends React.Component {
+state = {
+profiles: testData,
+};
+
 render() {
 return (
   <div>
     <div className="header">{this.props.title}</div>
-    <CardList />
+    <Form />
+    <CardList profiles={this.state.profiles} />
   </div>
 );
 }
