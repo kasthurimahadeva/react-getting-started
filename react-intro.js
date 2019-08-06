@@ -1,8 +1,9 @@
 function Button() {
   const [counter, setCounter] = useState(0);
+  const handleClick = () => setCounter(counter + 1);
 	return (
     <button
-      onClick={() => setCounter(counter + 1)}>
+      onClick={handleClick}>
       {counter}
     </button>
   );
