@@ -7,15 +7,13 @@ const testData = [
 
 const CardList = (props) => (
 <div>
-<Card {...testData[0]} />
-<Card {...testData[1]} />
+{testData.map((profile => <Card {...profile} />))}
 </div>
 );
 
 class Card extends React.Component {
 render() {
 const data = this.props;
-console.log(data);
 return (
   <div className="github-profile">
     <img src={data.avatar_url} />
